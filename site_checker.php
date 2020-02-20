@@ -22,7 +22,7 @@ if ($handle) {
 		$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
 		if($httpcode != 200 && $httpcode != 301) {
-			$to = $argv[1];
+			$to = $email;
 			$subject = "$host is unavailable by GET";
 			$text = $host." is unavailable by GET";
 			if(!mail($to, $subject, $text)){
@@ -39,7 +39,7 @@ if ($handle) {
 //				echo 'SUCCESS';
 			} else {
 				//echo "ERROR: $errCode - $errStr\n\r";
-				$to = $argv[1];
+				$to = $email;
 				$subject = "$host is unavailable on port $port";
 				$text = $host." is unavailable on port $port \n\r ERROR: $errCode - $errStr";
 				if(!mail($to, $subject, $text)){
